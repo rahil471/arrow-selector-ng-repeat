@@ -1,0 +1,39 @@
+<style>
+.selected {
+	background-color:black;
+	color:white;
+	font-weight:bold;
+}
+</style>
+<html>
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/> 
+	</head>
+	<body ng-app="foodApp" ng-controller="foodCtrl">
+		<table class="table table-bordered" arrow-selector>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+			</tr>
+			<tr ng-repeat="item in foodItems" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)">
+				<td>{{$index}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.price}}</td>
+				<td>{{item.quantity}}</td>
+			</tr>
+		</table>
+		<div>
+			selectedRow = {{selectedRow}}
+		</div>
+		<div>
+			item = {{foodItems[selectedRow]}}
+		</div>
+		<br>
+		<div class="text-danger">Please use up and down arrows to change selection(Mouse pointer should be on the table)</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="js/foodCtrl.js"></script>
+	</body>
+</html>
